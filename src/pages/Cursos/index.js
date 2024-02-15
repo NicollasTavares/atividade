@@ -1,63 +1,58 @@
-import { SafeAreaView, Text, StyleSheet, View, ScrollView } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, View, Platform, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
+export default function Cursos() {
 
-export default function Inicio() {
+    const navegation = useNavigation();
+
+    function navegaServidoresLinux() {
+        navegation.navigate('ServidoresLinux');
+    }
+    function navegaAjustagemMecanica() {
+        navegation.navigate('AjustagemMecanica');
+    } function navegaAnalistadaQualidade() {
+        navegation.navigate('AnalistaDaQualidade');
+    }
+
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <View style={styles.caixa}>
-                    <Text style={{fontWeight: 'bold', height: '15%'}}>Servidores Linux</Text>
-                    <Text>Capacidades Técnicas:</Text>
-                    <Text>Configurar o sistema operacional GNU Linux</Text>
-                    <Text>Configurar servidores DHCP</Text>
-                    <Text>Configurar servidores DNS</Text>
-                    <Text>Gerenciar o sistema operacional GNU Linux</Text>
-                </View>
-
-                <View style={styles.caixa}>
-                    <Text style={{fontWeight: 'bold', height: '15%'}}>Ajustagem Mecânica</Text>
-                    <Text>Planejar a ordem de execução da usinagem</Text>
-                    <Text>Ajustar peças manualmente</Text>
-                    <Text>Montar conjuntos mecânicos</Text>
-                    <Text>Fixar peças e dispositivos na máquina</Text>
-                    <Text>Usinar peças</Text>
-                </View>
-
-                <View style={styles.caixa}>
-                    <Text style={{fontWeight: 'bold', height: '15%'}}>Analista da Qualidade</Text>
-                    <Text>Processos e produção de projetos</Text>
-                    <Text>Manutenção Produtiva Total ( TPM)</Text>
-                    <Text>Técnico em Desenvolvimento de Sistemas</Text>
-                    <Text>INDMO - Interface para Dispositivos Móveis</Text>
-                    <Text>INDMO - Interface para Dispositivos Móveis</Text>
-                    <Text>INDMO - Interface para Dispositivos Móveis</Text>
-                </View>
-            </ScrollView>
+        <SafeAreaView style={styles.androidSafeArea}>
+            <Text style={styles.infos}>O SENAI-SP oferece várias opções de cursos, ágeis e de curta duração, a profissionais já atuantes ou que buscam uma nova oportunidade no mercado de trabalho.</Text>
+            <View style={styles.caixa}>
+                <Text style={styles.infos}>ADMINISTRADOR DE SERVIDORES LINUX</Text>
+                <Button color={'red'} title='Saiba mais' onPress={navegaServidoresLinux}></Button>
+            </View>
+            <View style={styles.caixa}>
+                <Text style={styles.infos}>AJUSTAGEM MECÂNICA</Text>
+                <Button color={'red'} title='Saiba mais' onPress={navegaAjustagemMecanica}></Button>
+            </View>
+            <View style={styles.caixa}>
+                <Text style={styles.infos}>ANALISTA DA QUALIDADE</Text>
+                <Button color={'red'} title='Saiba mais' onPress={navegaAnalistadaQualidade}></Button>
+            </View>
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        color: 'black',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 5,
-    },
-    scroll: {
-        gap: 15,
+    androidSafeArea: {
+        paddingTop: Platform.OS === 'android' ? 30 : 0,
     },
     caixa: {
+        backgroundColor: '#FA8072',
+        borderRadius: 50,
+        width: '95%',
+        height: '23%',
+        borderWidth: 5,
+        margin: 10,
         alignItems: 'center',
-        gap: 15,
-        backgroundColor: '#fff',
-        borderRadius: 56,
-        width: '85%',
-        height: '40%',
-        margin: 30,
-        borderWidth: 2,
-        justifyContent: 'center',
-    }
+        borderBlockColor: 'red'
 
+    },
+    infos: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        marginLeft: 20,
+        margin: 15,
+        color: 'black',
+    },
 })

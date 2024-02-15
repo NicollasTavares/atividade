@@ -4,10 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 
+
 import Inicio from '../pages/Inicio';
-import Contatos from '../pages/Contatos'
-import Cursos from '../pages/Cursos'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Contatos from '../pages/Contatos';
+import Cursos from '../pages/Cursos';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
